@@ -1,0 +1,40 @@
+#:import utils kivy.utils
+<Label>:
+    font_name: "font/joystix"
+    color: 0/255, 0/255, 0/255
+
+<Button>:
+    background_normal: ''
+    background_color: (1, 1, 1, 1)
+
+    background_down: ''
+
+    on_press: self.background_color: utils.get_color_from_hex('#d1d1d1')
+    # on_release: self.background_color: utils.get_color_from_hex('#ffffff')
+
+
+<MyRoot>:
+    canvas.before:
+        Color:
+            rgba: (0.96, 0.93, 0.81, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    random_num: random_num
+
+    BoxLayout:
+        orientation: 'vertical'
+        background_color: (1, 1, 1, 1)
+        Label:
+            text: "Random generator"
+            font_size: 54
+            color: (0.92, 0.45, 0, 1)
+        Label:
+            id: random_num
+            text: "-"
+            font_size: 54
+        Button:
+            text: "Generate"
+            font_size: 32
+            on_press: root.generate_random()

@@ -8,8 +8,8 @@ Attach a pin to a servo and move it about.
 """
 
 # some globals
-SERVO_1_PIN = 3
-SERVO_2_PIN = 6
+SERVO_1_PIN = 3 # bottom
+SERVO_2_PIN = 5 # top
 
 # Create a Telemetrix instance.
 board = telemetrix.Telemetrix(arduino_instance_id=1)
@@ -32,12 +32,12 @@ def move_servo(servo_pin):
         time.sleep(0.015)
 
 
-while True:
-    try:
-        move_servo(SERVO_1_PIN)
-        move_servo(SERVO_2_PIN)
-    except KeyboardInterrupt:
-        break
+# while True:
+#     try:
+#         move_servo(SERVO_1_PIN)
+#         # move_servo(SERVO_2_PIN)
+#     except KeyboardInterrupt:
+#         break
 
 board.shutdown()
 sys.exit()
