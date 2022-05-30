@@ -8,7 +8,7 @@
     background_normal: 'assets/whiteButtonUp.png'
     background_down: 'assets/whiteButtonDown.png'
     pos_hint: {'top': 1}
-    size_hint_y: 3.5
+
 
 # -------------------------- APP --------------------------
 
@@ -48,23 +48,24 @@
     f4sh: f4sh
 
     ################ Layouts
-    BoxLayout:
+    GridLayout:
+        rows: 4
+        cols: 1
         canvas.before:
             Color:
                 rgba: (255/255, 127/255, 39/255, 1)
             Rectangle:
                 pos: self.pos
                 size: (self.width, self.height)
+                # height: 50
 
-        orientation: 'vertical'
         background_color: utils.get_color_from_hex('#ff7f27')
-        size_hint: (1, 0.30)
         pos_hint: {'top': 1}
 
         Label:
             text: "Avtomatiziran ksilofon 22"
             font_size: self.height
-            size_hint: (1.0, .40)
+            size_hint: (1.0, .23)
             color: (255/255, 201/255, 14/255, 1)
 
 
@@ -79,9 +80,12 @@
                     size: self.size
 
             orientation: 'horizontal'
-            background_color: (245/255, 239/255, 207/255, 1)
             spacing: 10
             padding: 10
+
+            Button:
+                background_color: (0, 0, 0, 0)
+                size_hint_x: .4
 
             Button:
                 id: c3sh
@@ -89,12 +93,18 @@
                 color: (1, 1, 1, 1)
                 background_normal: 'assets/blackButtonUp.png'
                 background_down: 'assets/blackButtonDown.png'
+                # padding: [0, 0, 0, 0]
             Button:
                 id: d3sh
                 text: 'D3#'
                 color: (1, 1, 1, 1)
                 background_normal: 'assets/blackButtonUp.png'
                 background_down: 'assets/blackButtonDown.png'
+
+            Button:
+                background_color: (0, 0, 0, 0)
+                size_hint_x: .4
+
             Button:
                 id: f3sh
                 text: 'F3#'
@@ -113,6 +123,11 @@
                 color: (1, 1, 1, 1)
                 background_normal: 'assets/blackButtonUp.png'
                 background_down: 'assets/blackButtonDown.png'
+
+            Button:
+                background_color: (0, 0, 0, 0)
+                size_hint_x: .4
+
             Button:
                 id: c4sh
                 text: 'C4#'
@@ -125,6 +140,11 @@
                 color: (1, 1, 1, 1)
                 background_normal: 'assets/blackButtonUp.png'
                 background_down: 'assets/blackButtonDown.png'
+
+            Button:
+                background_color: (0, 0, 0, 0)
+                size_hint_x: .4
+
             Button:
                 id: f4sh
                 text: 'F4#'
@@ -132,6 +152,9 @@
                 background_normal: 'assets/blackButtonUp.png'
                 background_down: 'assets/blackButtonDown.png'
 
+            Button:
+                background_color: (0, 0, 0, 0)
+                size_hint_x: .4
 
 
         ### WHITE KEYS
@@ -145,46 +168,58 @@
                     size: self.size
 
             orientation: 'horizontal'
-            background_color: (245/255, 239/255, 207/255, 1)
+            # background_color: (245/255, 239/255, 207/255, 1)
             spacing: 10
             padding: 10
 
             Button:
                 id: c3
                 text: 'C3'
+               # pos_hint: {'top': -1.25}
             Button:
                 id: d3
                 text: 'D3'
+                # pos_hint: {'top': -1.25}
             Button:
                 id: e3
                 text: 'E3'
+                # pos_hint: {'top': -1.25}
             Button:
                 id: f3
                 text: 'F3'
+                # pos_hint: {'top': -1.25}
             Button:
                 id: g3
                 text: 'G3'
+                # pos_hint: {'top': -1.25}
             Button:
                 id: a4
                 text: 'A4'
+                # pos_hint: {'top': -1.25}
             Button:
                 id: b4
                 text: 'B4'
+                # pos_hint: {'top': -1.25}
             Button:
                 id: c4
                 text: 'C4'
+                # pos_hint: {'top': -1.25}
             Button:
                 id: d4
                 text: 'D4'
+                # pos_hint: {'top': -1.25}
             Button:
                 id: e4
                 text: 'E4'
+                # pos_hint: {'top': -1.25}
             Button:
                 id: f4
                 text: 'F4'
+                # pos_hint: {'top': -1.25}
             Button:
                 id: g4
                 text: 'G4'
+                # pos_hint: {'top': -1.25}
 
 
 #        Label:
