@@ -1,0 +1,197 @@
+#:import utils kivy.utils
+
+<Label>:
+    font_name: "font/joystix"
+    color: 0/255, 0/255, 0/255
+
+<Button>:
+    background_normal: 'assets/whiteButtonUp.png'
+    background_down: 'assets/whiteButtonDown.png'
+    pos_hint: {'top': 1}
+    size_hint_y: 3.5
+
+# -------------------------- APP --------------------------
+
+<RootApp>:
+    canvas.before:
+        Color:
+            rgba: (0.96, 0.93, 0.81, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    ################ IDs
+    ### white keys
+    whiteKeys: whiteKeys
+    c3: c3
+    d3: d3
+    e3: e3
+    f3: f3
+    g3: g3
+    a4: a4
+    b4: b4
+    c4: c4
+    d4: d4
+    e4: e4
+    f4: f4
+    g4: g4
+
+    ### black keys
+    blackKeys: blackKeys
+    c3sh: c3sh
+    d3sh: d3sh
+    f3sh: f3sh
+    g3sh: g3sh
+    a4sh: a4sh
+    c4sh: c4sh
+    d4sh: d4sh
+    f4sh: f4sh
+
+    ################ Layouts
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: (255/255, 127/255, 39/255, 1)
+            Rectangle:
+                pos: self.pos
+                size: (self.width, self.height)
+
+        orientation: 'vertical'
+        background_color: utils.get_color_from_hex('#ff7f27')
+        size_hint: (1, 0.30)
+        pos_hint: {'top': 1}
+
+        Label:
+            text: "Avtomatiziran ksilofon 22"
+            font_size: self.height
+            size_hint: (1.0, .40)
+            color: (255/255, 201/255, 14/255, 1)
+
+
+        ### BLACK KEYS
+        BoxLayout:
+            id: blackKeys
+            canvas.before:
+                Color:
+                    rgba: (0.96, 0.93, 0.81, 1)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            orientation: 'horizontal'
+            background_color: (245/255, 239/255, 207/255, 1)
+            spacing: 10
+            padding: 10
+
+            Button:
+                id: c3sh
+                text: 'C3#'
+                color: (1, 1, 1, 1)
+                background_normal: 'assets/blackButtonUp.png'
+                background_down: 'assets/blackButtonDown.png'
+            Button:
+                id: d3sh
+                text: 'D3#'
+                color: (1, 1, 1, 1)
+                background_normal: 'assets/blackButtonUp.png'
+                background_down: 'assets/blackButtonDown.png'
+            Button:
+                id: f3sh
+                text: 'F3#'
+                color: (1, 1, 1, 1)
+                background_normal: 'assets/blackButtonUp.png'
+                background_down: 'assets/blackButtonDown.png'
+            Button:
+                id: g3sh
+                text: 'G3#'
+                color: (1, 1, 1, 1)
+                background_normal: 'assets/blackButtonUp.png'
+                background_down: 'assets/blackButtonDown.png'
+            Button:
+                id: a4sh
+                text: 'A4#'
+                color: (1, 1, 1, 1)
+                background_normal: 'assets/blackButtonUp.png'
+                background_down: 'assets/blackButtonDown.png'
+            Button:
+                id: c4sh
+                text: 'C4#'
+                color: (1, 1, 1, 1)
+                background_normal: 'assets/blackButtonUp.png'
+                background_down: 'assets/blackButtonDown.png'
+            Button:
+                id: d4sh
+                text: 'D4#'
+                color: (1, 1, 1, 1)
+                background_normal: 'assets/blackButtonUp.png'
+                background_down: 'assets/blackButtonDown.png'
+            Button:
+                id: f4sh
+                text: 'F4#'
+                color: (1, 1, 1, 1)
+                background_normal: 'assets/blackButtonUp.png'
+                background_down: 'assets/blackButtonDown.png'
+
+
+
+        ### WHITE KEYS
+        BoxLayout:
+            id: whiteKeys
+            canvas.before:
+                Color:
+                    rgba: (0.96, 0.93, 0.81, 1)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            orientation: 'horizontal'
+            background_color: (245/255, 239/255, 207/255, 1)
+            spacing: 10
+            padding: 10
+
+            Button:
+                id: c3
+                text: 'C3'
+            Button:
+                id: d3
+                text: 'D3'
+            Button:
+                id: e3
+                text: 'E3'
+            Button:
+                id: f3
+                text: 'F3'
+            Button:
+                id: g3
+                text: 'G3'
+            Button:
+                id: a4
+                text: 'A4'
+            Button:
+                id: b4
+                text: 'B4'
+            Button:
+                id: c4
+                text: 'C4'
+            Button:
+                id: d4
+                text: 'D4'
+            Button:
+                id: e4
+                text: 'E4'
+            Button:
+                id: f4
+                text: 'F4'
+            Button:
+                id: g4
+                text: 'G4'
+
+
+#        Label:
+#            id: random_num
+#            text: "-"
+#            font_size: 54
+#        Button:
+#            text: "Generate"
+#            font_size: 32
+#            on_press: root.generate_random()
