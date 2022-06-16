@@ -5,7 +5,7 @@ from telemetrix import telemetrix
 
 DIGITAL_PIN = 13
 
-board_1 = telemetrix.Telemetrix(arduino_instance_id=1)
+board_1 = telemetrix.Telemetrix(arduino_instance_id=2)
 # board_2 = telemetrix.Telemetrix(arduino_instance_id=2)
 
 board_1.set_pin_mode_digital_output(DIGITAL_PIN)

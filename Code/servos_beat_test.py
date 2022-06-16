@@ -16,12 +16,12 @@ SERVO_4_PIN = 9 # top right
 WH_BEAT_DEG = 125
 
 # Create a Telemetrix instance.
-board = telemetrix.Telemetrix(arduino_instance_id=1)
+# board = telemetrix.Telemetrix(arduino_instance_id=1)
 board2 = telemetrix.Telemetrix(arduino_instance_id=2)
-board.set_pin_mode_servo(SERVO_1_PIN, 544, 2400)
-board.set_pin_mode_servo(SERVO_2_PIN, 544, 2400)
-board.set_pin_mode_servo(SERVO_3_PIN, 544, 2400)
-board.set_pin_mode_servo(SERVO_4_PIN, 544, 2400)
+# board.set_pin_mode_servo(SERVO_1_PIN, 544, 2400)
+# board.set_pin_mode_servo(SERVO_2_PIN, 544, 2400)
+# board.set_pin_mode_servo(SERVO_3_PIN, 544, 2400)
+# board.set_pin_mode_servo(SERVO_4_PIN, 544, 2400)
 
 board2.set_pin_mode_servo(SERVO_1_PIN, 544, 2400)
 board2.set_pin_mode_servo(SERVO_2_PIN, 544, 2400)
@@ -36,11 +36,11 @@ time.sleep(5)
 def sweep_servo(servo_pin, min_deg, max_deg, sweep_speed):
     for pos in range(min_deg, max_deg + 1):
         print(pos)
-        board.servo_write(servo_pin, pos)
+        # board.servo_write(servo_pin, pos)
         time.sleep(sweep_speed)
     for pos in range(max_deg, min_deg-1, -1):
         print(pos)
-        board.servo_write(servo_pin, pos)
+        # board.servo_write(servo_pin, pos)
         time.sleep(sweep_speed)
 
 def sweep_2_servo(servo1, servo2, min, max, dif, sweep_speed, _board):
@@ -56,22 +56,22 @@ def sweep_2_servo(servo1, servo2, min, max, dif, sweep_speed, _board):
 def move_servo(servo_pin, dest, move_speed: float):
     for pos in range(dest+1):
         print(pos)
-        board.servo_write(servo_pin, pos)
+        # board.servo_write(servo_pin, pos)
         time.sleep(move_speed)
 
 def beat_servo(servo_pin, servo_beat_pin, max_deg):
     for pos in range(max_deg + 1):
-        board.servo_write(servo_beat_pin, 90)
+        # board.servo_write(servo_beat_pin, 90)
         print(pos)
-        board.servo_write(servo_pin, pos)
-        board.servo_write(servo_beat_pin, WH_BEAT_DEG)
+        # board.servo_write(servo_pin, pos)
+        # board.servo_write(servo_beat_pin, WH_BEAT_DEG)
         time.sleep(0.015)
 
     for pos in range(max_deg, -1, -1):
-        board.servo_write(servo_beat_pin, 90)
+        # board.servo_write(servo_beat_pin, 90)
         print(pos)
-        board.servo_write(servo_pin, pos)
-        board.servo_write(servo_beat_pin, WH_BEAT_DEG)
+        # board.servo_write(servo_pin, pos)
+        # board.servo_write(servo_beat_pin, WH_BEAT_DEG)
         time.sleep(0.015)
 
 
@@ -121,8 +121,8 @@ beat_pos2 = max(left_beat_pos2, right_beat_pos2)
 
 move_speed = 0.0015
 
-board.servo_write(SERVO_2_PIN, left_start_pos)
-board.servo_write(SERVO_4_PIN, right_start_pos)
+# board.servo_write(SERVO_2_PIN, left_start_pos)
+# board.servo_write(SERVO_4_PIN, right_start_pos)
 board2.servo_write(SERVO_2_PIN, left_start_pos2)
 board2.servo_write(SERVO_3_PIN, 80)
 board2.servo_write(SERVO_4_PIN, right_start_pos2)
@@ -145,7 +145,7 @@ while True:
         # sweep_servo(SERVO_2_PIN, left_start_pos, left_beat_pos, speed)
         # sweep_servo(SERVO_4_PIN, right_start_pos, right_beat_pos, speed)
 
-        sweep_2_servo(SERVO_2_PIN, SERVO_4_PIN, start_pos, beat_pos, 5, speed, board)
+        # sweep_2_servo(SERVO_2_PIN, SERVO_4_PIN, start_pos, beat_pos, 5, speed, board)
         sweep_2_servo(SERVO_2_PIN, SERVO_4_PIN, start_pos2, beat_pos2, 5, speed, board2)
 
         # time.sleep(0.2)
@@ -155,6 +155,6 @@ while True:
     except KeyboardInterrupt:
         break
 
-board.shutdown()
+# board.shutdown()
 board2.shutdown()
 sys.exit()

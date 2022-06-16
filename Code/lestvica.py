@@ -1,5 +1,6 @@
 import sys
 import time
+import os
 
 from telemetrix import telemetrix
 
@@ -14,24 +15,6 @@ SERVO_3_PIN = 6 # bottom right
 SERVO_4_PIN = 9 # top right
 
 WH_BEAT_DEG = 125
-
-# Create a Telemetrix instance.
-board = telemetrix.Telemetrix(arduino_instance_id=1)
-board2 = telemetrix.Telemetrix(arduino_instance_id=2)
-board.set_pin_mode_servo(SERVO_1_PIN, 544, 2400)
-board.set_pin_mode_servo(SERVO_2_PIN, 544, 2400)
-board.set_pin_mode_servo(SERVO_3_PIN, 544, 2400)
-board.set_pin_mode_servo(SERVO_4_PIN, 544, 2400)
-
-board2.set_pin_mode_servo(SERVO_1_PIN, 544, 2400)
-board2.set_pin_mode_servo(SERVO_2_PIN, 544, 2400)
-board2.set_pin_mode_servo(SERVO_3_PIN, 544, 2400)
-board2.set_pin_mode_servo(SERVO_4_PIN, 544, 2400)
-time.sleep(5)
-
-# # board.servo_write(SERVO_PIN, 80)
-# time.sleep(.2)
-# # board.servo_write(SERVO_PIN, -80)
 
 def sweep_servo(servo_pin, min_deg, max_deg, sweep_speed):
     for pos in range(min_deg, max_deg + 1):
@@ -129,53 +112,75 @@ def goto_note(_board, servo, servo2, note: int, move_speed = 0.0015, beat: bool 
         time.sleep(.2)
         sweep_2_servo(servo2, None, _min, _max, 5, 0.0002, _board, False)
 
+
+
 """"""""""""""""""""""""""
+print(str("\n" * 10))
 
-left_start_pos = 111
-left_beat_pos = 115
-right_start_pos = 106
-right_beat_pos = 110
-speed = 0.0005
+# Create a Telemetrix instance.
+board = telemetrix.Telemetrix(arduino_instance_id=1)
+board2 = telemetrix.Telemetrix(arduino_instance_id=2)
 
-left_start_pos2 = 98
-left_beat_pos2 = 103
-right_start_pos2 = 95
-right_beat_pos2 = 100
+start = input("Start y/n? ")
 
-start_pos = max(left_start_pos, right_start_pos)
-beat_pos = max(left_beat_pos, right_beat_pos)
+if start == "y":
+    board.set_pin_mode_servo(SERVO_1_PIN, 544, 2400)
+    board.set_pin_mode_servo(SERVO_2_PIN, 544, 2400)
+    board.set_pin_mode_servo(SERVO_3_PIN, 544, 2400)
+    board.set_pin_mode_servo(SERVO_4_PIN, 544, 2400)
 
-start_pos2 = max(left_start_pos2, right_start_pos2)
-beat_pos2 = max(left_beat_pos2, right_beat_pos2)
+    board2.set_pin_mode_servo(SERVO_1_PIN, 544, 2400)
+    board2.set_pin_mode_servo(SERVO_2_PIN, 544, 2400)
+    board2.set_pin_mode_servo(SERVO_3_PIN, 544, 2400)
+    board2.set_pin_mode_servo(SERVO_4_PIN, 544, 2400)
+    time.sleep(5)
+
+    """"""""""""""""""""""""""
+    left_start_pos = 111
+    left_beat_pos = 115
+    right_start_pos = 106
+    right_beat_pos = 110
+    speed = 0.0005
+
+    left_start_pos2 = 98
+    left_beat_pos2 = 103
+    right_start_pos2 = 95
+    right_beat_pos2 = 100
+
+    start_pos = max(left_start_pos, right_start_pos)
+    beat_pos = max(left_beat_pos, right_beat_pos)
+
+    start_pos2 = max(left_start_pos2, right_start_pos2)
+    beat_pos2 = max(left_beat_pos2, right_beat_pos2)
 
 
-move_speed = 0.0015
+    move_speed = 0.0015
 
-board.servo_write(SERVO_2_PIN, left_start_pos)
-board.servo_write(SERVO_4_PIN, right_start_pos)
-board2.servo_write(SERVO_2_PIN, left_start_pos2)
-board2.servo_write(SERVO_1_PIN, 85)
-board2.servo_write(SERVO_4_PIN, 95)
-board2.servo_write(SERVO_3_PIN, 80)
-time.sleep(.2)
-
-time.sleep(5)
-
-for i in range(1, 7):
-    goto_note(board, SERVO_1_PIN, SERVO_2_PIN, i, 0.0015, True, left_start_pos, left_beat_pos)
+    board.servo_write(SERVO_2_PIN, left_start_pos)
+    board.servo_write(SERVO_4_PIN, right_start_pos)
+    board2.servo_write(SERVO_2_PIN, left_start_pos2)
+    board2.servo_write(SERVO_1_PIN, 85)
+    board2.servo_write(SERVO_4_PIN, 95)
+    board2.servo_write(SERVO_3_PIN, 80)
     time.sleep(.2)
 
-for i in range(7, 13):
-    goto_note(board, SERVO_3_PIN, SERVO_4_PIN, i, 0.0015, True, right_start_pos, right_beat_pos)
-    time.sleep(.2)
+    time.sleep(5)
 
-for i in range(13, 17):
-    goto_note(board2, SERVO_1_PIN, SERVO_2_PIN, i, 0.0015, True, left_start_pos2, left_beat_pos2)
-    time.sleep(.2)
+    for i in range(1, 7):
+        goto_note(board, SERVO_1_PIN, SERVO_2_PIN, i, 0.0015, True, left_start_pos, left_beat_pos)
+        time.sleep(.2)
 
-for i in range(17, 21):
-    goto_note(board2, SERVO_3_PIN, SERVO_4_PIN, i, 0.0015, True, right_start_pos2, right_beat_pos2)
-    time.sleep(.2)
+    for i in range(7, 13):
+        goto_note(board, SERVO_3_PIN, SERVO_4_PIN, i, 0.0015, True, right_start_pos, right_beat_pos)
+        time.sleep(.2)
+
+    for i in range(13, 17):
+        goto_note(board2, SERVO_1_PIN, SERVO_2_PIN, i, 0.0015, True, left_start_pos2, left_beat_pos2)
+        time.sleep(.2)
+
+    for i in range(17, 21):
+        goto_note(board2, SERVO_3_PIN, SERVO_4_PIN, i, 0.0015, True, right_start_pos2, right_beat_pos2)
+        time.sleep(.2)
 
 # goto_note(board2, SERVO_3_PIN, SERVO_4_PIN, 20) # , 0.0015, True)
 
@@ -193,6 +198,6 @@ for i in range(17, 21):
 #     except KeyboardInterrupt:
 #         break
 
-board.shutdown()
-board2.shutdown()
-sys.exit()
+    board.shutdown()
+    board2.shutdown()
+    sys.exit()

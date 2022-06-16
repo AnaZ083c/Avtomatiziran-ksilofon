@@ -32,12 +32,12 @@ def move_servo(servo_pin):
         time.sleep(0.015)
 
 
-# while True:
-#     try:
-#         move_servo(SERVO_1_PIN)
-#         # move_servo(SERVO_2_PIN)
-#     except KeyboardInterrupt:
-#         break
+while True:
+    try:
+        move_servo(SERVO_1_PIN)
+        move_servo(SERVO_2_PIN)
+    except KeyboardInterrupt:
+        break
 
 board.shutdown()
 sys.exit()
