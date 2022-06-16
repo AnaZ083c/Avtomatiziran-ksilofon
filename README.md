@@ -6,6 +6,13 @@
  <br>
  arduino_instance_id ... ARDUINO_ID <br>
  
+## Ugotovitve
+1. Stabilne in delujoče knjižnice za Bluetooth (PyBluez) za Python 3.7 ali novejše ni; Python knjižnica za Arduino deluje le za Python verzije 3.7 ali novejše, stabilna verzija je le 0.22, kar pa deluje za Python 3.3 ali starejše.
+2. Programirati Arduino v Python-u s knjižnico Firmata se ne da, saj se ob izklopu Arduina iz računalnika Python program v celoti izbriše, ostane le gonilnik Firmata.
+3. Vezje moram narediti še enkrat
+4. Uporabila bom Arduino IDE za programiranje Arduinov in Javascript za izdelavo aplikacije za Android, saj mi bo to omogočilo pošiljanje sporočil prek Bluetooth modula
+5. Uporabila bom vezavo I2C Bus, kjer je Arduino na katerega je veza Bluetooth Master, drugi Arduino in Bluetooth modul pa sta Slave.
+ 
 ## Viri in povezave
 1. Knjižnica Telemetrix za programiranje Arduina v programskem jeziku Python: https://mryslab.github.io/telemetrix/
 2. GitHub repozitorij primerov uporabe knjižnice Telemetrix: https://github.com/MrYsLab/telemetrix/tree/master/examples
