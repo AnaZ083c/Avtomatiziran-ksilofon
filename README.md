@@ -15,7 +15,7 @@
 - [ ] Naredi Android aplikacijo, preko katere uporabnik pošilja podatke na Bluetooth, iz katerega Master Arduino podatke prebere in določene pošlje na Slave Arduino.
   - [ ] Usposobi Android JS
   - [x] Usposobi Node.js
-    - [x] Inptaliraj nvm
+    - [x] Inštaliraj nvm
   - [ ] Inštaliraj Android JS
 
  
