@@ -13,9 +13,9 @@
 - [x] Preizkusi hkratnost prižiganja in ugašanja LED diod
 - [x] LED diode sedaj zamenjaj s 4-mi motorji iz robota ter popravi program tako, da boš lahko iz telefona kontrolirala 2 robotski roki na Master Arduinu.
 - [ ] Naredi Android aplikacijo, preko katere uporabnik pošilja podatke na Bluetooth, iz katerega Master Arduino podatke prebere in določene pošlje na Slave Arduino.
- - [ ] Usposobi Android JS
+  - [ ] Usposobi Android JS
   - [x] Usposobi Node.js
-   - [x] Inptaliraj nvm
+    - [x] Inptaliraj nvm
   - [ ] Inštaliraj Android JS
 
  
