@@ -12,7 +12,7 @@
 3. ~~Zraven poveži še Bluetooth modul HC-05 in ga preizkusi tako, da prek telefona prižgeš LED diode, ki so priklopljene na Arduino~~
 4. ~~Preizkusi hkratnost prižiganja in ugašanja LED diod~~
 5. ~~LED diode sedaj zamenjaj s 4-mi motorji iz robota ter popravi program tako, da boš lahko iz telefona kontrolirala 2 robotski roki na Master Arduinu.~~
-6. Usposobi Node.js
+6. ~~Usposobi Node.js~~
 7. Usposobi Android JS
 8. Naredi Android aplikacijo, preko katere uporabnik pošilja podatke na Bluetooth, iz katerega Master Arduino podatke prebere in določene pošlje na Slave Arduino.
 
