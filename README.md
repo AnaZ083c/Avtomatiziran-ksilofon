@@ -35,7 +35,7 @@
 2. Programirati Arduino v Python-u s knjižnico Firmata se ne da, saj se ob izklopu Arduina iz računalnika Python program v celoti izbriše, ostane le gonilnik Firmata.
 3. Vezje moram narediti še enkrat
 4. Uporabila bom Arduino IDE za programiranje Arduinov in Javascript za izdelavo aplikacije za Android, saj mi bo to omogočilo pošiljanje sporočil prek Bluetooth modula
-5. Uporabila bom vezavo I2C Bus, kjer je Arduino na katerega je vezan Bluetooth, Master, drugi Arduino in Bluetooth modul pa sta Slave.
+5. Uporabila bom vezavo I2C Bus, kjer je Arduino na katerega je vezan Bluetooth Master, drugi Arduino in Bluetooth modul pa sta Slave.
  
 ## Viri in povezave
 1. Knjižnica Telemetrix za programiranje Arduina v programskem jeziku Python: https://mryslab.github.io/telemetrix/
