@@ -5,6 +5,8 @@
  Novi Arduino: COM7, ID 2 <br>
  <br>
  arduino_instance_id ... ARDUINO_ID <br>
+ **POZOR:** zgornje nič več ne velja, saj programiranje Arduina s Python-om na koncu ni bilo mogoče.
+ <br>
  
 ## TODO - na novo z Arduino IDE
 - [x] Usposobi Arduino IDE
