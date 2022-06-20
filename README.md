@@ -20,8 +20,6 @@
 
 ## Napredki
 - 20/06/2022 https://youtu.be/CKBQpshl-Xo
-- [![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/CKBQpshl-Xo)
-
  
 ## Ugotovitve
 1. Stabilne in delujoče knjižnice za Bluetooth (PyBluez) za Python 3.7 ali novejše ni; Python knjižnica za Arduino deluje le za Python verzije 3.7 ali novejše, stabilna verzija je le 0.22, kar pa deluje za Python 3.3 ali starejše.
