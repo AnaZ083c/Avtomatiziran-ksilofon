@@ -8,15 +8,21 @@
  
 ## TODO - na novo z Arduino IDE
 - [x] Usposobi Arduino IDE
-- [x] Preizkusi I2C vezavo med dvema Arduinoma in naredi testni program
-- [x] Zraven poveži še Bluetooth modul HC-05 in ga preizkusi tako, da prek telefona prižgeš LED diode, ki so priklopljene na Arduino
-- [x] Preizkusi hkratnost prižiganja in ugašanja LED diod
-- [x] LED diode sedaj zamenjaj s 4-mi motorji iz robota ter popravi program tako, da boš lahko iz telefona kontrolirala 2 robotski roki na Master Arduinu.
+- [x] Preizkusi I2C vezavo med dvema Arduinoma
+  - [x] Testiranje 
+    - [x] Zraven poveži še Bluetooth modul HC-05 in ga preizkusi tako, da prek telefona prižgeš LED diode, ki so priklopljene na Arduino
+    - [x] Preizkusi hkratnost prižiganja in ugašanja LED diod
+    - [x] LED diode sedaj zamenjaj s 4-mi motorji iz robota ter popravi program tako, da boš lahko iz telefona kontrolirala 2 robotski roki na Master Arduinu.
+  - [x] Pravi program za kontroliranje Avtomatiziranega ksilofona prek Bluetooth modula
+    - [x] Knjižnica Xylophone; da ni potrebe po večkratnem kopiranju kode
+    - [x] Program na Master Arduinu
+    - [x] Program na Slave Arduinu 
 - [ ] Naredi Android aplikacijo, preko katere uporabnik pošilja podatke na Bluetooth, iz katerega Master Arduino podatke prebere in določene pošlje na Slave Arduino.
-  - [ ] Usposobi Android JS
+  - [x] Usposobi Android JS
   - [x] Usposobi Node.js
     - [x] Inštaliraj nvm
-  - [ ] Inštaliraj Android JS
+  - [x] Inštaliraj Android JS
+  - [ ] Aplikacija za kontroliranje Avtomatiziranega ksilofona prek Bluetooth modula
 
 ## Napredki
 - 20/06/2022 https://youtu.be/CKBQpshl-Xo
