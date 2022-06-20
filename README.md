@@ -37,4 +37,4 @@
 6. Inštalacija Node.js: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl
 7. Inštalacija Android JS: https://android-js.github.io/
 
-<video src='https://github.com/AnaZ083c/Avtomatiziran-ksilofon/blob/main/Diploma%20Arduino/progress.mp4' width=180/>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CKBQpshl-Xo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
