@@ -21,8 +21,6 @@
 ## Napredki
 - 20/06/2022 https://youtu.be/CKBQpshl-Xo
 
-<video src='Diploma Arduino/progress.mp4' width=180/>
-
 ## Ugotovitve
 1. Stabilne in delujoče knjižnice za Bluetooth (PyBluez) za Python 3.7 ali novejše ni; Python knjižnica za Arduino deluje le za Python verzije 3.7 ali novejše, stabilna verzija je le 0.22, kar pa deluje za Python 3.3 ali starejše.
 2. Programirati Arduino v Python-u s knjižnico Firmata se ne da, saj se ob izklopu Arduina iz računalnika Python program v celoti izbriše, ostane le gonilnik Firmata.
@@ -38,3 +36,5 @@
 5. Načrtovanje PCB in načrta: https://easyeda.com/editor#id=280289e818d9433c9aece03fcf519e8a|6830f085d17f4884a8d563e2a4c2cf8f
 6. Inštalacija Node.js: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl
 7. Inštalacija Android JS: https://android-js.github.io/
+
+<video src='Diploma Arduino/progress.mp4' width=180/>
