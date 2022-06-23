@@ -19,12 +19,13 @@
     - [x] Knjižnica Xylophone; da ni potrebe po večkratnem kopiranju kode
     - [x] Program na Master Arduinu
     - [x] Program na Slave Arduinu 
-- [ ] Naredi Android aplikacijo, preko katere uporabnik pošilja podatke na Bluetooth, iz katerega Master Arduino podatke prebere in določene pošlje na Slave Arduino.
+- [x] Naredi Android aplikacijo, preko katere uporabnik pošilja podatke na Bluetooth, iz katerega Master Arduino podatke prebere in določene pošlje na Slave Arduino.
   - [x] Usposobi Android JS
   - [x] Usposobi Node.js
     - [x] Inštaliraj nvm
   - [x] Inštaliraj Android JS
-  - [ ] Aplikacija za kontroliranje Avtomatiziranega ksilofona prek Bluetooth modula
+  - [x] Aplikacija za kontroliranje Avtomatiziranega ksilofona prek Bluetooth modula
+- [ ] Narejeni aplikaciji dodaj možnost nalaganja MIDI datotek, katere bo Avtomatiziran ksilofon prebral in zaigral 
 
 ## Napredki
 - 20/06/2022 https://youtu.be/CKBQpshl-Xo
