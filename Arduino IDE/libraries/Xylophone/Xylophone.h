@@ -29,6 +29,9 @@ class Xylo {
             this->rightStartPos = positions[2];
             this->rightBeatPos = positions[3];
 
+            //this->gotoNote('d');
+            //this->gotoNote('h');
+
             this->startPos = max(leftStartPos, rightStartPos);
             this->beatPos = max(leftBeatPos, rightBeatPos);
 
@@ -55,18 +58,35 @@ class Xylo {
 
 
         // functions
-        void gotoNote(char note = 0, bool play = false, bool sharps = false, float noteDelay = 650);
+        void gotoNote(char note = 0, bool play = false, bool sharps = false, float noteDelay = 200);
         void beat2(int servo1, int servo2, int min_, int max_, float servoSpeed = 0.2, bool twoServo = false);
         void beat1(int servo, int min_, int max_, float servoSpeed = 0.2);
 
-    /*
+    
     private:
+        bool moveToPos(Servo servo, int pos, int step);
+
+        /*int notSharpNotes[12] = {
+            130, 
+            115, 
+            105, 
+            90, 
+            80, 
+            70, 
+            107, 
+            95, 
+            85, 
+            74, 
+            62, 
+            50
+        };*/
+
         String notSharps = "abcdefghijkl";
         String sharps = "mnoprstu";
 
         // functions
         float calculateDelay(char startNote, char endNote, float noteDelay);
-    */
+        int calculateSteps(Servo servo, int newPos);
 };
 
 

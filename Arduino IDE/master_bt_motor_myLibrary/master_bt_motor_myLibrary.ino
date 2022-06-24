@@ -40,31 +40,32 @@ int notes[12] = {
 bool servosBeat[2] = {false, false};
 
 int servos[4] = {SBL_G, SBL_D, SBD_G, SBD_D};
-SoftwareSerial bt(RX, TX);
+// SoftwareSerial bt(RX, TX);
 int positions[4] = {leftStartPos, leftBeatPos, rightStartPos, rightBeatPos};
 
 Xylo xylo;
 
 void setup() {
   // put your setup code here, to run once:
-  pinMode(RX, INPUT);
-  pinMode(TX, OUTPUT);
+  // pinMode(RX, INPUT);
+  // pinMode(TX, OUTPUT);
 
   xylo.setup(servos, positions);
   
   Wire.begin();
-  bt.begin(BAUD);
+  // bt.begin(BAUD);
   Serial.begin(9600);
 }
 
 
 void loop() {  
   Wire.beginTransmission(8);
-  if (bt.available() > 0) {
-    note = bt.read();
-    Serial.write(note);
+  if (Serial.available() > 0) {
+    note = Serial.read();
+    // Serial.write(note);
 
     xylo.gotoNote(note, true);
+      
     Wire.write(note);
     Wire.endTransmission();
     

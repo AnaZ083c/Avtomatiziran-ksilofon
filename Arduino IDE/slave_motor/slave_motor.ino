@@ -7,10 +7,10 @@
 #define SCL_G 5
 #define SCL_D 3
 
-int leftStartPos = 98;
-int leftBeatPos = 103;
-int rightStartPos = 95;
-int rightBeatPos = 100;
+int leftStartPos = 102;
+int leftBeatPos = 108;
+int rightStartPos = 102;
+int rightBeatPos = 108;
 float d = 0.0005;
 
 int startPos = max(leftStartPos, rightStartPos);
