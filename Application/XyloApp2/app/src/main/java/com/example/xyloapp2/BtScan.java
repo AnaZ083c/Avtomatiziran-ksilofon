@@ -163,6 +163,8 @@ public class BtScan extends AppCompatActivity {
             }
         });
 
+        builder.setIcon(R.drawable.ic_baseline_warning_amber_24);
+
         return builder.create();
     }
 
