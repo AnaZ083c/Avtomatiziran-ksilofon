@@ -51,3 +51,4 @@
 5. Načrtovanje PCB in načrta: https://easyeda.com/editor#id=280289e818d9433c9aece03fcf519e8a|6830f085d17f4884a8d563e2a4c2cf8f
 6. Inštalacija Node.js: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl
 7. Inštalacija Android JS: https://android-js.github.io/
+8. Android dokumentacija, ki sem jo uporabila za izdelavo aplikacije: https://developer.android.com/guide
