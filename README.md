@@ -41,7 +41,7 @@
 3. Vezje moram narediti še enkrat
 4. Uporabila bom Arduino IDE za programiranje Arduinov in Javascript za izdelavo aplikacije za Android, saj mi bo to omogočilo pošiljanje sporočil prek Bluetooth modula
 5. Uporabila bom vezavo I2C Bus, kjer je Arduino na katerega je vezan Bluetooth Master, drugi Arduino in Bluetooth modul pa sta Slave.
-6. Za izdelavo aplikavije za Android sem na koncu morala uporabiti razvojno okolje Android Studio, v katerem se programira v programskem jeziku Java. Ugotovila sem,<br>da se aplikacija, ki sem jo naredila v programskem jeziku JavaScript (knjižnici Android JS in Node.js) ni hotela prevesti.
+6. Za izdelavo aplikavije za Android sem na koncu morala uporabiti razvojno okolje Android Studio, v katerem se programira v programskem jeziku Java. Ugotovila sem, da se aplikacija, ki sem jo naredila v programskem jeziku JavaScript (knjižnici Android JS in Node.js) ni hotela prevesti.
  
 ## Viri in povezave
 1. Knjižnica Telemetrix za programiranje Arduina v programskem jeziku Python: https://mryslab.github.io/telemetrix/
