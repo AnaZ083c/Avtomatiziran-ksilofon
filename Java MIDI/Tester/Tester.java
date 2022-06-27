@@ -1,5 +1,4 @@
 import java.io.File;
-
 import midiparse.MIDIParser;
 
 public class Tester {

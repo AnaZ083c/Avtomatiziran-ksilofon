@@ -12,6 +12,8 @@ import java.util.Set;
 import java.util.Arrays;
 
 public class MIDIParser {
+    public byte format;
+
     private File midiFile;
     
     public MIDIParser(File midiFile) {
@@ -43,15 +45,35 @@ public class MIDIParser {
         FileInputStream fis = new FileInputStream(midiFile);
         DataInputStream dis = new DataInputStream(fis);
         
-        // Data
+        // Header Stuff
         int header = dis.readInt();
         int headerLen = dis.readInt();
         byte[] headerData = new byte[headerLen];
 
         for (int i = 0; i < headerData.length; i++)
             headerData[i] = dis.readByte();
+        
+        /**
+         * MIDI format:
+         * 0 - the file contains a single multi-channel track
+         * 1 - the file contains 1 or more simultaneous tracks (or MIDI outputs) of a sequence
+         * 3 - the file contains 1 or more sequentially independent single-track patterns
+         */
+        this.format = headerData[0];
 
-        printArrayAsHex(headerData);
+        
+        // Track Stuff
+
+
+        
+    }
+
+    public void getHeaderChunk() throws Exception {
+        // TODO
+    }
+
+    public void getTrackChunks() throws Exception {
+        // TODO
     }
 
     public static void printArrayAsHex(byte[] arr) {
