@@ -1,5 +1,8 @@
 import java.io.EOFException;
 import java.io.File;
+import java.util.Arrays;
+
+import midiparse.Event;
 import midiparse.MIDIParser;
 
 public class Tester {
@@ -9,7 +12,12 @@ public class Tester {
         MIDIParser midiParser = new MIDIParser(new File(FILEPATH));
 
         try {
-            midiParser.parse();
+            midiParser.getLastMeta();
+
+            /*for (Event evnt : midiParser.noteOnEvents) {
+                System.out.println(evnt.toString());
+            }*/
+
         } catch(Exception e) {
             e.printStackTrace();
         }
