@@ -2,13 +2,15 @@ package midiparse;
 
 import java.util.ArrayList;
 
+import javax.sound.midi.MetaEventListener;
+
 public class Event {
     private DeltaTime deltaTime;
     private ArrayList<Byte> eventCode;
     private ArrayList<Byte> eventParams;
 
     // Event Codes
-    byte[][] metaEventCodes = new byte[][]{
+    public static byte[][] metaEventCodes = new byte[][]{
         {(byte)0xFF, (byte)0x00, (byte)0x02},
         {(byte)0xFF, (byte)0x01},
         {(byte)0xFF, (byte)0x02},
@@ -18,6 +20,7 @@ public class Event {
         {(byte)0xFF, (byte)0x06},
         {(byte)0xFF, (byte)0x07},
         {(byte)0xFF, (byte)0x20, (byte)0x01},
+        {(byte)0xFF, (byte)0x21, (byte)0x01},
         {(byte)0xFF, (byte)0x2F, (byte)0x00},
         {(byte)0xFF, (byte)0x51, (byte)0x03},
         {(byte)0xFF, (byte)0x54, (byte)0x05},
@@ -70,7 +73,7 @@ public class Event {
             for (int i = 0; i < 15; i++) {
                 if (metaEventCodes[i].length >= eventCode.size()) {
                     for (int j = 0; j < metaEventCodes[i].length; j++) {
-                        if (eventCode.get(j) != metaEventCodes[i][j])
+                        if (eventCode.get(j).byteValue() != metaEventCodes[i][j])
                             return false;
                     }
                 }
@@ -78,6 +81,17 @@ public class Event {
         }
 
         return true;
+    }
+
+    public static void decodeMeta(byte[] meta) {
+        ArrayList<Byte> decoded = new ArrayList<>();
+        for (int i = 0; i < 16; i++) {
+            if (metaEventCodes[i].length <= meta.length) {
+                for (int j = 0; j < metaEventCodes[i].length; j++)
+                    if (meta[j] == metaEventCodes[i][j])
+                        decoded.add(metaEventCodes[i][j]);
+            }
+        }
     }
 
     @Override
