@@ -27,6 +27,8 @@
   - [x] Inštaliraj Android Studio; za izdelavo aplikacije sem uporabila razvojno okolje Android Studio, saj mi izdelava z Android JS ni uspela (glej **Ugotovitve**).
   - [x] Aplikacija za kontroliranje Avtomatiziranega ksilofona prek Bluetooth modula
 - [ ] Narejeni aplikaciji dodaj možnost nalaganja MIDI datotek, katere bo Avtomatiziran ksilofon prebral in zaigral 
+  - [x] Poskusi narediti svojo knjižnico za parsanje MIDI datotek ali pa poišči delujočo Java knjižnico, ki to naredi
+  - [ ] Z MIDI knjižnico implementiraj Java razred, ki bo prebrala note, itd. tako, da jih bo razumel Avtomatiziran ksilofon
 
 ## Napredki
 - 20/06/2022 https://youtu.be/CKBQpshl-Xo
@@ -52,3 +54,4 @@
 6. Inštalacija Node.js: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl
 7. Inštalacija Android JS: https://android-js.github.io/
 8. Android dokumentacija, ki sem jo uporabila za izdelavo aplikacije: https://developer.android.com/guide
+9. Uporabljena knjižnica za MIDI: https://github.com/leffelmania/android-midi-lib
