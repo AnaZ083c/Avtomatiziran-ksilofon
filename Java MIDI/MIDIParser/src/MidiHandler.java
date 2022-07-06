@@ -1,14 +1,19 @@
+import java.awt.*;
 import java.io.File;
 import java.util.*;
+import java.util.List;
 
 import com.leff.midi.MidiFile;
 import com.leff.midi.MidiTrack;
 import com.leff.midi.event.MidiEvent;
 import com.leff.midi.event.NoteOff;
 import com.leff.midi.event.NoteOn;
+import com.leff.midi.event.meta.Tempo;
+import com.leff.midi.util.MidiUtil;
 
-public class Tester {
-    public static final String FILEPATH = "testFiles\\twinkle.mid";
+public class MidiHandler {
+    public static Tempo tempo;
+
     public static final int[][] RANGES = new int[][] {
             { 24, 44 },
             { 36, 56 },
@@ -26,23 +31,29 @@ public class Tester {
     public static HashMap<String, Integer[]> notesNumbers = new HashMap<>();
     public static ArrayList<String> notesAndDurs = new ArrayList<>();
     public static int[] notes;
-    public static int[] durs;
+    public static long[] durs;
+    public static long[] dursMs;
 
-    public static void main(String[] args) {
+    private ArrayList<MidiEvent> noteOnOffs = new ArrayList<>();
+    private ArrayList<Long> noteOnOffsDurs = new ArrayList<>();
+    private String midiFilePath;
+
+    public MidiHandler(String midiFilePath) throws Exception {
+        this.midiFilePath = midiFilePath;
+
         fillNotesHashMap();
-
-        for (String key : notesNumbers.keySet()) {
-            System.out.println(key + " : " + Arrays.toString(notesNumbers.get(key)));
-        }
-
-        try {
-            readMidi(new File(FILEPATH));
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        this.readMidi(new File(this.midiFilePath));
     }
 
-    public static void readMidi(File midiFile) throws Exception {
+    public String getMidiFilePath() {
+        return midiFilePath;
+    }
+
+    public void setMidiFilePath(String midiFilePath) {
+        this.midiFilePath = midiFilePath;
+    }
+
+    private void readMidi(File midiFile) throws Exception {
         MidiFile midi = new MidiFile(midiFile);
 
         if (midi.getTrackCount() > 1)
@@ -59,6 +70,8 @@ public class Tester {
             if (event instanceof NoteOn || event instanceof NoteOff) {
                 midiEvents.add(event);
                 // System.out.println(event.getDelta());
+            } else if (event instanceof Tempo) {
+                tempo = (Tempo)event;
             }
         }
 
@@ -78,17 +91,34 @@ public class Tester {
             }
 
             notesAndDurs.add(String.format("%d %d", noteVal, noteDuration));
+            this.noteOnOffs.add(event);
+            this.noteOnOffsDurs.add(noteDuration);
+
         }
+
+        /* Convert a delta time of a note into milliseconds */
+        int counter = 0;
+        for (MidiEvent event : noteOnOffs) {
+            long deltaTime = noteOnOffsDurs.get(counter);
+            long ms = MidiUtil.ticksToMs(deltaTime, tempo.getBpm(), midi.getResolution());
+            // System.out.printf("Note: %d, Delta: %d -- DeltaToMs: %d\n", notes[counter], deltaTime, ms);
+
+            notesAndDurs.set(counter, notesAndDurs.get(counter) + " " + ms);
+
+            counter++;
+        }
+        /* ****************************** */
 
         notes = getNotesFromString();
         durs = getNotesDurationsFromString();
+        dursMs = getNotesDursMsFromString();
 
         boolean isMidiInRange = isMidiInRange();
         if (!isMidiInRange)
             throw new InvalidMidi("This MIDI file is not in range of the Xylophone. Please, choose a different file.");
     }
 
-    public static int[] getNoteOnOffCount(MidiTrack track) {
+    public int[] getNoteOnOffCount(MidiTrack track) {
         int sumOff = 0;
         int sumOn = 0;
         for (MidiEvent event : track.getEvents()) {
@@ -101,7 +131,7 @@ public class Tester {
         return new int[]{sumOn, sumOff};
     }
 
-    public static int[] getNotesFromString() {
+    public int[] getNotesFromString() {
         int[] notes = new int[notesAndDurs.size()];
 
         for (int i = 0; i < notes.length; i++) {
@@ -112,18 +142,29 @@ public class Tester {
         return notes;
     }
 
-    public static int[] getNotesDurationsFromString() {
-        int[] durs = new int[notesAndDurs.size()];
+    public long[] getNotesDurationsFromString() {
+        long[] durs = new long[notesAndDurs.size()];
 
         for (int i = 0; i < durs.length; i++) {
             String[] tmp = notesAndDurs.get(i).split(" ");
-            durs[i] = Integer.parseInt(tmp[1]);
+            durs[i] = Long.parseLong(tmp[1]);
         }
 
         return durs;
     }
 
-    public static int getMaxNoteFromString() {
+    public long[] getNotesDursMsFromString() {
+        long[] dursMs = new long[notesAndDurs.size()];
+
+        for (int i = 0; i < dursMs.length; i++) {
+            String tmp[] = notesAndDurs.get(i).split(" ");
+            dursMs[i] = Long.parseLong(tmp[2]);
+        }
+
+        return dursMs;
+    }
+
+    public int getMaxNoteFromString() {
         int max = Integer.MIN_VALUE;
 
         for (int note : notes) {
@@ -134,7 +175,7 @@ public class Tester {
         return max;
     }
 
-    public static int getMinNoteFromString() {
+    public int getMinNoteFromString() {
         int min = Integer.MAX_VALUE;
 
         for (int note : notes) {
@@ -145,9 +186,9 @@ public class Tester {
         return min;
     }
 
-    public static boolean isMidiInRange() {
-        int minNote = getMinNoteFromString();
-        int maxNote = getMaxNoteFromString();
+    public boolean isMidiInRange() {
+        int minNote = this.getMinNoteFromString();
+        int maxNote = this.getMaxNoteFromString();
 
         boolean minInRange = false;
         boolean maxInRange = false;
@@ -191,7 +232,7 @@ public class Tester {
         return (num >= min && num <= max);
     }
 
-    public static void fillNotesHashMap() {
+    public void fillNotesHashMap() {
         for (int i = 0; i < 11; i++) {
             int startNote = i + 24;
             Integer[] allNoteNums = getAllNumbersOfNote(startNote);
@@ -209,6 +250,26 @@ public class Tester {
         }
 
         return noteNums.toArray(new Integer[0]);
+    }
+
+    public void tickTest(boolean printDelays) throws Exception {
+        for (String s : notesAndDurs) {
+            String[] tmp = s.split(" ");
+            long delay = Long.parseLong(tmp[1]); //Long.parseLong(tmp[2]) / (long)Math.pow(10, 6);
+
+            if (printDelays) System.out.println(delay);
+            beepAwt();
+            Thread.sleep(delay);
+        }
+    }
+
+    public static void beep() {
+        System.out.println("\007");
+        System.out.flush();
+    }
+
+    public static void beepAwt() {
+        Toolkit.getDefaultToolkit().beep();
     }
 }
 
