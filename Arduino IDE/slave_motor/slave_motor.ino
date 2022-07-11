@@ -35,11 +35,12 @@ void setup() {
     Serial.begin(9600);
 }
 
+int count = 0;
 void loop() {
   //delay(100);
   if (note) {
     for (int i = 0; i < notes.length(); i++)
-      xylo.gotoNote(notes.charAt(i), true, true);
+      xylo.gotoNote(count, notes.charAt(i), true, true);
     note = 0;
     notes = "";
   }

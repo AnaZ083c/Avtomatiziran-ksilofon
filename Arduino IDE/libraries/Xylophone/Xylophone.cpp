@@ -37,7 +37,7 @@ bool Xylo::moveToPos(Servo servo, int pos, int step) {
     return servo.read() == pos;
 }
 
-void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = false, float noteDelay = 200) {
+void Xylo::gotoNote(char note = 0, bool play = false, bool sharps = false, float noteDelay = 200) {
   int servoHead;
   bool twoNotes = false;
   //float calculatedDelay = this->calculateDelay()
@@ -61,7 +61,6 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 130;
             servoHead = 0;
             this->servosBeat[0] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
         case 'b':
             startPos = servos[1].read();
@@ -70,7 +69,6 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 115;
             servoHead = 0;
             this->servosBeat[0] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
         case 'c':
             startPos = servos[1].read();
@@ -78,7 +76,6 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 105;
             servoHead = 0;
             this->servosBeat[0] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
         case 'd':
             startPos = servos[1].read();
@@ -86,7 +83,6 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 90;
             servoHead = 0;
             this->servosBeat[0] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
         case 'e':
             startPos = servos[1].read();
@@ -94,7 +90,6 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 80;
             servoHead = 0;
             this->servosBeat[0] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
         case 'f':
             startPos = servos[1].read();
@@ -103,7 +98,6 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 70;
             servoHead = 0;
             this->servosBeat[0] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
 
         // SBD
@@ -113,7 +107,6 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 107;
             servoHead = 2;
             this->servosBeat[1] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;    
         case 'h':
             startPos = servos[3].read();
@@ -121,7 +114,6 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 95;
             servoHead = 2;
             this->servosBeat[1] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
         case 'i':
             startPos = servos[3].read();
@@ -129,7 +121,6 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 85;
             servoHead = 2;
             this->servosBeat[1] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
         case 'j':
             startPos = servos[3].read();
@@ -137,7 +128,6 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 74;
             servoHead = 2;
             this->servosBeat[1] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
         case 'k':
             startPos = servos[3].read();
@@ -145,7 +135,6 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 62;
             servoHead = 2;
             this->servosBeat[1] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
         case 'l':
             startPos = servos[3].read();
@@ -153,14 +142,12 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 50;
             servoHead = 2;
             this->servosBeat[1] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
 
         default: 
             play = false;
             this->servosBeat[0] = false;
             this->servosBeat[1] = false;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
     }
  }
@@ -176,7 +163,6 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 40;
             servoHead = 0;
             this->servosBeat[0] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
         case 'n':
             startPos = servos[1].read();
@@ -184,7 +170,6 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 50;
             servoHead = 0;
             this->servosBeat[0] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
         case 'o':
             startPos = servos[1].read();
@@ -192,7 +177,6 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 72;
             servoHead = 0;
             this->servosBeat[0] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
         case 'p':
             startPos = servos[1].read();
@@ -200,7 +184,6 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 85;
             servoHead = 0;
             this->servosBeat[0] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
 
         // SCD
@@ -210,7 +193,6 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 50;
             servoHead = 2;
             this->servosBeat[1] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
         case 's':
             startPos = servos[3].read();
@@ -218,7 +200,6 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 70;
             servoHead = 2;
             this->servosBeat[1] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
         case 't':
             startPos = servos[3].read();
@@ -226,7 +207,6 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 80;
             servoHead = 2;
             this->servosBeat[1] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
         case 'u':
             startPos = servos[3].read();
@@ -234,24 +214,15 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
             endPos = 102;
             servoHead = 2;
             this->servosBeat[1] = true;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
         
         default: 
             play = false;
             this->servosBeat[0] = false;
             this->servosBeat[1] = false;
-            twoNotes = this->servosBeat[0] && servosBeat[1];
             break;
     }
   }
-
-  if (note == 'q') {
-    this->playbackMode = true;
-    delay(100);  // remove if necesary
-  }
-  else if (note == 'y')
-    this->playbackMode = false;
 
   int min_ = (servoHead == 0)? this->leftStartPos : this->rightStartPos;
   int max_ = (servoHead == 0)? this->leftBeatPos : this->rightBeatPos;
@@ -260,13 +231,12 @@ void Xylo::gotoNote(int count, char note = 0, bool play = false, bool sharps = f
 
   if (play) {
     if (this->servos[servoHead+1].read() == endPos) {
-        if ((startPos != endPos) || this->playbackMode)
+        if (startPos != endPos)
             delay(noteDelay);
         this->beat1(servoHead, min_, max_, 5);
         // TODO
 
-        // beat2(0, 2, min_, max_, 5, count >= 2);
-        
+        // beat(0, 2, min_, max_, 20, servosBeat[0] && servosBeat[1]);
     }
   }
 }

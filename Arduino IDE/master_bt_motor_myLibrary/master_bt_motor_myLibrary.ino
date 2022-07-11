@@ -57,14 +57,15 @@ void setup() {
   Serial.begin(9600);
 }
 
-
-void loop() {  
+int count = 0;
+void loop() {    
   Wire.beginTransmission(8);
   if (Serial.available() > 0) {
     note = Serial.read();
     // Serial.write(note);
-
-    xylo.gotoNote(note, true);
+    // count++;
+    xylo.gotoNote(count, note, true);
+    
       
     Wire.write(note);
     Wire.endTransmission();
@@ -80,4 +81,7 @@ void loop() {
     }*/
     note = 0;
   }
+  /*
+  if (count >= 2)
+    count = 0;*/
 }
