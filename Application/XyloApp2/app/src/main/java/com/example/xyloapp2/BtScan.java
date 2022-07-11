@@ -1,5 +1,10 @@
 package com.example.xyloapp2;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import androidx.annotation.NonNull;
@@ -8,6 +13,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -29,12 +35,21 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.leff.midi.MidiFile;
+import com.leff.midi.MidiTrack;
+import com.leff.midi.event.MidiEvent;
+
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public class BtScan extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 1;
+    private static final int REQUEST_FILE_CHOOSE = 5;
 
     String noDevicesPaired = "No paired devices yet...";
     ArrayList<String> pairedDevices = new ArrayList<>();
@@ -102,6 +117,21 @@ public class BtScan extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    //    ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
+//            new ActivityResultContracts.StartActivityForResult(),
+//            new ActivityResultCallback<ActivityResult>() {
+//                @Override
+//                public void onActivityResult(ActivityResult result) {
+//                    if (result.getResultCode() == Activity.RESULT_OK) {
+//                        Intent data = result.getData();
+//                        Uri uri = data.getData();
+//
+//                        printlnDialog(uri.getPath());
+//                    }
+//                }
+//            }
+//    );
 
     @Override
     protected void onResume() {
@@ -231,5 +261,4 @@ public class BtScan extends AppCompatActivity {
     public void updateArrayAdapter() {
         arrAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, pairedDevices);
     }
-
 }
