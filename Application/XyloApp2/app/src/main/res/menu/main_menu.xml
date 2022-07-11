@@ -3,31 +3,16 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/midiFileTitle"
-        android:title="MIDIFILETITLE"
-        app:actionLayout="@layout/play_pause"
-        app:showAsAction="always"
-        />
-
-
-    <item
-        android:id="@+id/midiPlayPause"
-        android:icon="@drawable/ic_baseline_play_circle_24"
-        android:title="MIDIPLAYPAUSE"
-        app:showAsAction="always"
-        />
-
-    <item
-        android:id="@+id/midiUpload"
-        android:icon="@drawable/ic_baseline_file_upload_24"
-        android:title="MIDIUP"
-        app:showAsAction="always"
-        />
-
-    <item
         android:id="@+id/btDisconnect"
         android:icon="@drawable/ic_baseline_bluetooth_disabled_24"
         android:title="BTDISCONNECT"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/bluetoothButton"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="BTCONNECT"
         app:showAsAction="always"
         />
 

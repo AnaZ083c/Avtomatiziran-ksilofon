@@ -1,19 +1,15 @@
 package com.example.xyloapp2;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.core.graphics.PathUtils;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,8 +22,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,16 +30,7 @@ import java.util.UUID;
 public class MainActivity extends AppCompatActivity {
 
     private View decorView;
-    private Menu menu;
-
-    public boolean play = false;
     public boolean grantedPermission;
-    public static final int REQUEST_FILE_CHOOSE = 5;
-
-    public String oldMidiFilePath = "";
-    public String midiFilePath = "";
-    public Uri midiUri;
-    public MidiHandler midiHandler = null;
 
     AlertDialog btConnectDialog;
 
@@ -279,8 +264,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
 
-        this.menu = menu;
-
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -299,101 +282,23 @@ public class MainActivity extends AppCompatActivity {
                 getApplicationContext(), Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED;
 
         switch (item.getItemId()) {
-//            case R.id.bluetoothButton:
-//                if (!grantedPermission)
-//                    btConnectDialog.show();
-//                else {
-//                    Intent intent = new Intent(MainActivity.this, BtScan.class);
-//                    startActivity(intent);
-//                }
-//                break;
+            case R.id.bluetoothButton:
+                if (!grantedPermission)
+                    btConnectDialog.show();
+                else {
+                    Intent intent = new Intent(MainActivity.this, BtScan.class);
+                    startActivity(intent);
+                }
+                break;
 
             case R.id.btDisconnect:
                 Disconnect();
                 Intent intent = new Intent(MainActivity.this, BtScan.class);
                 startActivity(intent);
                 break;
-
-            case R.id.midiUpload:
-                // TODO: MIDI file picker
-                Intent fileOpen = new Intent(Intent.ACTION_GET_CONTENT);
-                Uri uri = Uri.parse(".");
-                fileOpen.setDataAndType(uri, "*/*");
-                startActivityForResult(Intent.createChooser(fileOpen, "Open folder"), REQUEST_FILE_CHOOSE);
-                break;
-
-            case R.id.midiPlayPause:
-                try {
-                    if (midiHandler != null) {
-                        // midiHandler.tickTest(false, getApplicationContext());
-                        playMIDI();
-                    }
-                } catch (Exception e) {
-                    printErr(e.getMessage());
-                    e.printStackTrace();
-                }
-                break;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == Activity.RESULT_OK) {
-            Uri midiUri = data.getData();
-            String filePath = midiUri.getPath();
-            this.midiUri = midiUri;
-
-            ContentResolver cr = getContentResolver();
-//
-//            midiFilePath = filePath;
-
-            MenuItem item = menu.findItem(R.id.midiPlayPause);
-            item.setTitle(filePath);
-
-            try {
-                midiHandler = new MidiHandler(cr, this.midiUri);
-//                if (play) {
-//                    playMIDI(midiHandler);
-//                }
-                // midiHandler.tickTest(false, getApplicationContext());
-
-            } catch (Exception e) {
-                printErr(e.getMessage());
-                e.printStackTrace();
-            }
-
-            Toast.makeText(getApplicationContext(), filePath, Toast.LENGTH_LONG).show();
-        }
-    }
-
-    private void playMIDI() throws Exception {
-        String[] notesAndDurs = midiHandler.notesAndDurs.toArray(new String[0]);
-
-//        for (int i = 0; i < notesAndDurs.length; i++) {
-//            String[] tmp = notesAndDurs[i].split(" ");
-//            int key = Integer.parseInt(tmp[0]);
-//            long delay = Long.parseLong(tmp[1]);
-//            char note = midiHandler.btSignalMap.get(key);
-//
-//            playNote(note);
-//            Thread.sleep(delay);
-//        }
-
-        playNote('q');
-        for (String s : notesAndDurs) {
-            String[] tmp = s.split(" ");
-            int key = Integer.parseInt(tmp[0]);
-            long delay = Long.parseLong(tmp[1]);
-            char note = midiHandler.btSignalMap.get(key);
-
-            playNote(note);
-            Thread.sleep(delay);
-        }
-        playNote('y');
     }
 
     private int hideSystemBars() {
@@ -480,14 +385,6 @@ public class MainActivity extends AppCompatActivity {
         dialogMsg.show();
     }
 
-    public void printErr(String msg) {
-        AlertDialog dialogErr = okCancelDialog(false, getWindow().getContext(), "Error!", msg, "ok", "cancel");
-        dialogErr.setIcon(R.drawable.ic_baseline_error_24);
-        dialogErr.show();
-    }
-
-
-
     /* ############## BUTTON CLICK LISTENERS ############## */
     private void playNote(char note) {
         if (btSocket != null) {
@@ -538,7 +435,7 @@ public class MainActivity extends AppCompatActivity {
                 printMsg("Connection failed!\n\nMaybe the device you're trying to connect to isn't HC-05 or HC-06?", true);
                 // finish();
             } else {
-                printMsg("Connected ☺", false);
+                printMsg("Connected :)", false);
                 isConnected = true;
             }
             progress.dismiss();
