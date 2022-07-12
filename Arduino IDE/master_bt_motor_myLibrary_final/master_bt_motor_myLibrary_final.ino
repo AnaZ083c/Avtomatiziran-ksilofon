@@ -23,20 +23,6 @@ int startPos = max(leftStartPos, rightStartPos);
 int beatPos = max(leftBeatPos, rightBeatPos);
 
 char note = 0;
-/*int notes[12] = {
-  130, 
-  115, 
-  105, 
-  90, 
-  80, 
-  70, 
-  107, 
-  95, 
-  85, 
-  74, 
-  62, 
-  50
-};*/
 bool servosBeat[2] = {false, false};
 
 int servos[4] = {SBL_G, SBL_D, SBD_G, SBD_D};
@@ -57,49 +43,23 @@ void setup() {
   Serial.begin(9600);
 }
 
-int count = 0;
-char leftRight = 0;
-char one = 0;
-char two = 0;
-char *notes;
-char delimiter = '-';
 size_t len = 2;
 void loop() {    
   Wire.beginTransmission(8);
   if (Serial.available() > 0) {
     note = Serial.read();
     // Serial.write(note);
-    // xylo.gotoNote(count, note, true);
-
-    // one = Serial.read();
-
-    // notes = Serial.readBytes(notes,len);
+    xylo.gotoNote(note, true);
     
     Serial.print(note);
     Serial.print(":");
     Serial.println(millis());
     
-    /*if (note >= 97 && note <= 102)
-      leftRight = 'L';
-    else if (note >= 103 && note <= 108)
-      leftRight = 'R';
-
-    xylo.receiveByte(leftRight, note, true);*/
-    
     Wire.write(note);
     Wire.endTransmission();
     
-    /*if (note < 'm') {
-      xylo.gotoNote(note, true);
-      //note = 0;
-    }
-    else {
-      // send the note to slave Arduino
-      Wire.write(note);
-      Wire.endTransmission();
-    }*/
     note = 0;
     leftRight = 0;
     notes = "";
-  }
+  } 
 }
