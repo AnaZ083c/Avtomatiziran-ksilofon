@@ -17,6 +17,12 @@ class Xylo {
         int startPos;
         int beatPos;
 
+        bool playbackMode;
+        bool doubleNote;
+        bool left, right;
+
+        char receivedNotes[2] = {0, 0};
+
         // inits
         void servosInit(int servos[4], int positions[4]) {
             this->servos[0].attach(servos[0]);
@@ -59,6 +65,8 @@ class Xylo {
 
         // functions
         void gotoNote(char note = 0, bool play = false, bool sharps = false, float noteDelay = 200);
+        void receiveByte(char leftRight, char note = 0, bool play = false, bool sharps = false, float noteDelay = 200);
+        void beat3(int servo, int min_, int max_);
         void beat2(int servo1, int servo2, int min_, int max_, float servoSpeed = 0.2, bool twoServo = false);
         void beat1(int servo, int min_, int max_, float servoSpeed = 0.2);
 
