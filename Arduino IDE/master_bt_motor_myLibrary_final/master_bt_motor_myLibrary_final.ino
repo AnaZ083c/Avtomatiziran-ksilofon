@@ -59,7 +59,7 @@ void loop() {
     Wire.endTransmission();
     
     note = 0;
-    leftRight = 0;
-    notes = "";
+    /*leftRight = 0;
+    notes = "";*/
   } 
 }
