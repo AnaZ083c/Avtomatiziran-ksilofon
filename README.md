@@ -35,7 +35,10 @@
   - Na tem posnetku je prikazano kontroliranje Arduinov (Avtomatiziranega ksilofona) prek Bluetooth modula, na katerega je povezan moj prenosnik (na COM3) 
 - 24/06/2022 https://youtu.be/tT9_6YZVIwU
   - Na tem posnetku je prikazano delovanje aplikacije (Xylo BOSS), preko katere kontroliram Avtomatiziran ksilofon.
-
+- 16/07/2022 https://youtu.be/lkloqlt3Lvk
+  - Na tem posnetku je prikazano nalaganje in igranje MIDI datoteke
+- 16/07/2022 https://youtube.com/shorts/2oRQ_HPKiTE?feature=share
+  - Na tem posnetku je prikazano simultano igranje dveh not hkrati
 
 ## Ugotovitve
 1. Stabilne in delujoče knjižnice za Bluetooth (PyBluez) za Python 3.7 ali novejše ni; Python knjižnica za Arduino deluje le za Python verzije 3.7 ali novejše, stabilna verzija je le 0.22, kar pa deluje za Python 3.3 ali starejše.
