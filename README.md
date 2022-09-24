@@ -26,9 +26,9 @@
   - [x] ~~Inštaliraj Android JS~~
   - [x] Inštaliraj Android Studio; za izdelavo aplikacije sem uporabila razvojno okolje Android Studio, saj mi izdelava z Android JS ni uspela (glej **Ugotovitve**).
   - [x] Aplikacija za kontroliranje Avtomatiziranega ksilofona prek Bluetooth modula
-- [ ] Narejeni aplikaciji dodaj možnost nalaganja MIDI datotek, katere bo Avtomatiziran ksilofon prebral in zaigral 
+- [x] Narejeni aplikaciji dodaj možnost nalaganja MIDI datotek, katere bo Avtomatiziran ksilofon prebral in zaigral 
   - [x] Poskusi narediti svojo knjižnico za parsanje MIDI datotek ali pa poišči delujočo Java knjižnico, ki to naredi
-  - [ ] Z MIDI knjižnico implementiraj Java razred, ki bo prebrala note, itd. tako, da jih bo razumel Avtomatiziran ksilofon
+  - [x] Z MIDI knjižnico implementiraj Java razred, ki bo prebrala note, itd. tako, da jih bo razumel Avtomatiziran ksilofon
 
 ## Napredki
 - 20/06/2022 https://youtu.be/CKBQpshl-Xo
@@ -39,6 +39,8 @@
   - Na tem posnetku je prikazano nalaganje in igranje MIDI datoteke
 - 16/07/2022 https://youtube.com/shorts/2oRQ_HPKiTE?feature=share
   - Na tem posnetku je prikazano simultano igranje dveh not hkrati
+- 18/09/2022 https://youtu.be/60N60lc3Bh8?list=PLrysv-m3yMSXUdyY1KENl7B7qmCYhf44p
+  - Na tem posnetku je prikazano delovanje končne verzije avtomatiziranega ksilofona
 
 ## Ugotovitve
 1. Stabilne in delujoče knjižnice za Bluetooth (PyBluez) za Python 3.7 ali novejše ni; Python knjižnica za Arduino deluje le za Python verzije 3.7 ali novejše, stabilna verzija je le 0.22, kar pa deluje za Python 3.3 ali starejše.
